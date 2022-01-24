@@ -1,10 +1,16 @@
 import * as React from 'react';
 import {useWindowDimensions} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import ES from '../../i18n/ES';
-import {colors} from '../../styles/colors';
+
+//pages
 import {ProfileScreen} from './ProfileScreen';
 import {ChatScreen} from './ChatScreen';
+
+//locates
+import ES from '../../i18n/ES';
+
+//styles
+import {colors} from '../../styles/colors';
 
 const renderScene = SceneMap({
   chat: ChatScreen,

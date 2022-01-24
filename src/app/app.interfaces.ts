@@ -1,5 +1,5 @@
 export interface RoutesNameType {
-  LOGIN: string;
+  REGISTER: string;
   HOME: string;
   CHAT: string;
   PROFILE: string;

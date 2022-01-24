@@ -17,7 +17,7 @@ export const ButtonDefaultStyled = styled.TouchableOpacity<IButtonStyledProps>`
   color: ${({color}) => (color ? color : colors.black)};
 `;
 
-export const ButtonCircleSmallStyled = styled.View<IButtonStyledProps>`
+export const ButtonCircleSmallStyled = styled.TouchableOpacity<IButtonStyledProps>`
   width: 56px;
   height: 56px;
   border-radius: 30px;

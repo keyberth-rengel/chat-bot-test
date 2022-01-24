@@ -9,6 +9,7 @@ import {routesName} from '../app/contants';
 import {RegisterScreen} from '../screens/auth/register';
 import {TabViewContainer} from '../screens/app/TabViewScreen';
 
+//stacks
 const Stack = createStackNavigator();
 
 export const StackNavigation = () => {
@@ -16,7 +17,7 @@ export const StackNavigation = () => {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={routesName.HOME}>
-      <Stack.Screen name={routesName.LOGIN} component={RegisterScreen} />
+      <Stack.Screen name={routesName.REGISTER} component={RegisterScreen} />
       <Stack.Screen name={routesName.HOME} component={TabViewContainer} />
     </Stack.Navigator>
   );
