@@ -15,8 +15,10 @@ interface IContainerStyledProps {
   pB?: string;
   p?: string;
   justifyBetween?: boolean;
+  align?: string;
   w?: string;
   h?: string;
+  direction?: string;
 }
 
 interface IDividerStyledProps {
@@ -37,7 +39,9 @@ export const ContainerStyled = styled.View<IContainerStyledProps>`
   ${({justifyCenter = false}) => justifyCenter && 'justify-content: center'};
   ${({justifyBetween = false}) =>
     justifyBetween && 'justify-content: space-between'};
+  ${({align = 'flex-start'}) => align && `align-items: ${align}`};
   ${({alignCenter = false}) => alignCenter && 'align-items: center'};
+  ${({direction}) => direction && `flex-direction: ${direction}`};
 `;
 
 export const DividerStyled = styled.View<IDividerStyledProps>`

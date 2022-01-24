@@ -22,10 +22,10 @@ export function RegisterScreen() {
   const validateForm = () => {
     const data = {textUserName, textEmail, textPassword};
     console.log('data', data);
-    clearForm();
+    cleanForm();
   };
 
-  const clearForm = () => {
+  const cleanForm = () => {
     setTextUserName('');
     setTextEmail('');
     setTextPassword('');

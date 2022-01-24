@@ -21,6 +21,7 @@ export const ButtonCircleSmallStyled = styled.TouchableOpacity<IButtonStyledProp
   width: 56px;
   height: 56px;
   border-radius: 30px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   background-color: ${({bg}) => (bg ? bg : 'transparent')};
 `;
