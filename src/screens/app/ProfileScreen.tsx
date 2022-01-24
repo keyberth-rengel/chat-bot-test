@@ -45,7 +45,7 @@ export const ProfileScreen = () => {
         </ContainerStyled>
       </ContainerStyled>
 
-      <ButtonDefaultStyled onPress={signOff} bg={colors.orange}>
+      <ButtonDefaultStyled onPress={signOff} bg={colors.pink}>
         <TextDefaultStyled weight="700" color={colors.white}>
           {ES.sign_off}
         </TextDefaultStyled>
