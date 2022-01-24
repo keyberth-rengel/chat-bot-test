@@ -34,3 +34,12 @@ export const TextMediumStyled = styled.Text<ITextStyledProps>`
   font-family: ${({family}) => (family ? family : 'normal')};
   text-align: ${({align}) => (align ? align : 'left')};
 `;
+
+export const TextSmallStyled = styled.Text<ITextStyledProps>`
+  font-size: 12px;
+  line-height: 24px;
+  color: ${({color}) => (color ? color : colors.black)};
+  font-weight: ${({weight}) => (weight ? weight : 'normal')};
+  font-family: ${({family}) => (family ? family : 'normal')};
+  text-align: ${({align}) => (align ? align : 'left')};
+`;

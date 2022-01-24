@@ -25,8 +25,8 @@ interface IDividerStyledProps {
 }
 
 export const ContainerStyled = styled.View<IContainerStyledProps>`
-  width: ${({w = width}) => (w ? w : width)};
-  height: ${({h = height}) => (h ? h : height)};
+  width: ${({w = '100%'}) => (w ? w : width)};
+  height: ${({h = '100%'}) => (h ? h : height)};
   padding-top: ${({pT = '32'}) => pT}px;
   padding-right: ${({pR = '24'}) => pR}px;
   padding-bottom: ${({pB = '32'}) => pB}px;

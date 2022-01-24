@@ -1,13 +1,18 @@
 import React, {useState} from 'react';
+
+//locates
 import ES from '../../../i18n/ES';
+
+//styles
 import {
   ButtonDefaultStyled,
   ContainerStyled,
   DividerStyled,
   InputDefaultStyled,
+  colors,
+  TextLongStyled,
+  TextDefaultStyled,
 } from '../../../styles';
-import {colors} from '../../../styles';
-import {TextLongStyled, TextDefaultStyled} from '../../../styles/TextStyles';
 
 export function RegisterScreen() {
   const [textUserName, setTextUserName] = useState<string>('');
