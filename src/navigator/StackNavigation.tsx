@@ -6,7 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {routesName} from '../app/contants';
 
 //pages
-import {LoginScreen} from '../screens/auth/login';
+import {RegisterScreen} from '../screens/auth/register';
 
 const Stack = createStackNavigator();
 
@@ -15,7 +15,7 @@ export const StackNavigation = () => {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={routesName.LOGIN}>
-      <Stack.Screen name={routesName.LOGIN} component={LoginScreen} />
+      <Stack.Screen name={routesName.LOGIN} component={RegisterScreen} />
     </Stack.Navigator>
   );
 };
