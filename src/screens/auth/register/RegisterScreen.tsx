@@ -1,4 +1,6 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
+import {routesName} from '../../../app/contants';
 
 //locates
 import ES from '../../../i18n/ES';
@@ -15,6 +17,7 @@ import {
 } from '../../../styles';
 
 export function RegisterScreen() {
+  const navigation = useNavigation();
   const [textUserName, setTextUserName] = useState<string>('');
   const [textEmail, setTextEmail] = useState<string>('');
   const [textPassword, setTextPassword] = useState<string>('');
@@ -23,12 +26,17 @@ export function RegisterScreen() {
     const data = {textUserName, textEmail, textPassword};
     console.log('data', data);
     cleanForm();
+    navigationToHome();
   };
 
   const cleanForm = () => {
     setTextUserName('');
     setTextEmail('');
     setTextPassword('');
+  };
+
+  const navigationToHome = () => {
+    navigation.navigate(routesName.HOME);
   };
 
   return (

@@ -16,7 +16,7 @@ export const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={routesName.HOME}>
+      initialRouteName={routesName.REGISTER}>
       <Stack.Screen name={routesName.REGISTER} component={RegisterScreen} />
       <Stack.Screen name={routesName.HOME} component={TabViewContainer} />
     </Stack.Navigator>

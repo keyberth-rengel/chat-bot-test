@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 //locates
 import ES from '../../i18n/ES';
@@ -14,8 +15,20 @@ import {
   colors,
 } from '../../styles';
 
+//contanst
+import {routesName} from '../../app/contants';
+
 export const ProfileScreen = () => {
-  const signOff = () => {};
+  const navigation = useNavigation();
+
+  const signOff = () => {
+    navigationToRegister();
+  };
+
+  const navigationToRegister = () => {
+    navigation.navigate(routesName.REGISTER);
+  };
+
   return (
     <ContainerStyled flexbox justifyBetween alignCenter>
       <ContainerStyled p="0" flexbox alignCenter h="auto">
