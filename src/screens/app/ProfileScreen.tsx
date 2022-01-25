@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 //locates
@@ -18,8 +19,14 @@ import {
 //contanst
 import {routesName} from '../../app/contants';
 
+//store
+import {RootState} from '../../store';
+
 export const ProfileScreen = () => {
   const navigation = useNavigation();
+  const authState = useSelector<RootState>(
+    (state: RootState) => state.authState,
+  );
 
   const signOff = () => {
     navigationToRegister();
@@ -28,6 +35,8 @@ export const ProfileScreen = () => {
   const navigationToRegister = () => {
     navigation.navigate(routesName.REGISTER);
   };
+
+  console.log('authState', authState);
 
   return (
     <ContainerStyled flexbox justifyBetween alignCenter>

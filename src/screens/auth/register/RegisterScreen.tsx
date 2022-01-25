@@ -1,5 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 import {routesName} from '../../../app/contants';
 
 //locates
@@ -16,8 +17,12 @@ import {
   TextDefaultStyled,
 } from '../../../styles';
 
+//actions
+import {setUserAuthAction} from '../../../store/auth/authAction';
+
 export function RegisterScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [textUserName, setTextUserName] = useState<string>('');
   const [textEmail, setTextEmail] = useState<string>('');
   const [textPassword, setTextPassword] = useState<string>('');
@@ -25,6 +30,13 @@ export function RegisterScreen() {
   const validateForm = () => {
     const data = {textUserName, textEmail, textPassword};
     console.log('data', data);
+    dispatch(
+      setUserAuthAction({
+        userName: textUserName,
+        email: textEmail,
+        password: textPassword,
+      }),
+    );
     cleanForm();
     navigationToHome();
   };
