@@ -6,4 +6,5 @@ export interface UserAuthState {
 
 export interface AuthState {
   auth: UserAuthState;
+  isLoading: boolean;
 }

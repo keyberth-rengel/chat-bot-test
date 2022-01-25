@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {ActivityIndicator} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {routesName} from '../../../core/contants';
 
@@ -19,8 +20,15 @@ import {
 } from '../../../styles';
 
 //actions
-import {setUserAuthAction} from '../../../store/auth/authAction';
+import {
+  setUserAuthAction,
+  setLoadingAction,
+} from '../../../store/auth/authAction';
 import {getStoreData} from '../../../core/storage';
+
+//interfaces
+import {AuthState} from '../../../store/auth/auth.interface';
+import {RootState} from '../../../store';
 
 interface IInputErrorProps {
   email: boolean;
@@ -31,6 +39,9 @@ interface IInputErrorProps {
 export function RegisterScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState, AuthState>(
+    (state: RootState) => state.authState,
+  );
   const [textUserName, setTextUserName] = useState<string>('');
   const [textEmail, setTextEmail] = useState<string>('');
   const [textPassword, setTextPassword] = useState<string>('');
@@ -42,6 +53,7 @@ export function RegisterScreen() {
 
   const validateForm = (): void => {
     if (!inputError.userName && !inputError.email && !inputError.password) {
+      dispatch(setLoadingAction(true));
       dispatch(
         setUserAuthAction({
           userName: textUserName,
@@ -51,6 +63,7 @@ export function RegisterScreen() {
       );
       cleanForm();
       navigationToHome();
+      dispatch(setLoadingAction(false));
     }
   };
 
@@ -116,19 +129,21 @@ export function RegisterScreen() {
   }, []);
 
   const validateIfSession = async (): Promise<void> => {
+    dispatch(setLoadingAction(true));
     const userAuth = await getStoreData();
 
     if (userAuth) {
       dispatch(setUserAuthAction(userAuth));
       navigationToHome();
     }
+    dispatch(setLoadingAction(false));
   };
 
   const navigationToHome = (): void => {
     navigation.navigate(routesName.HOME);
   };
 
-  const validatedError =
+  const validatedError = () =>
     inputError.email || inputError.userName || inputError.password;
 
   return (
@@ -183,12 +198,22 @@ export function RegisterScreen() {
       </ContainerStyled>
 
       <ButtonDefaultStyled
-        disabled={validatedError}
+        disabled={validatedError()}
         onPress={validateForm}
-        bg={validatedError ? colors.grayDark : colors.orange}>
-        <TextDefaultStyled weight="700" color={colors.white}>
-          {ES.create_account}
-        </TextDefaultStyled>
+        bg={
+          isLoading
+            ? colors.grayDark
+            : validatedError()
+            ? colors.grayDark
+            : colors.orange
+        }>
+        {isLoading ? (
+          <ActivityIndicator size="large" color={colors.orange} />
+        ) : (
+          <TextDefaultStyled weight="700" color={colors.white}>
+            {ES.create_account}
+          </TextDefaultStyled>
+        )}
       </ButtonDefaultStyled>
     </ContainerStyled>
   );

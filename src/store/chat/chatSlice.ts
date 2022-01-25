@@ -20,7 +20,14 @@ export const chatSlice = createSlice({
       state.messages.push(action.payload);
     },
     clearChat: state => {
-      state.messages = [];
+      state.messages = [
+        {
+          id: 2345234,
+          title: 'Tu mejor amigo',
+          body: 'Estoy para ayudate y motivarte.',
+          owner: false,
+        },
+      ];
     },
   },
 });
