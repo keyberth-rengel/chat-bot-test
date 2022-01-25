@@ -5,6 +5,7 @@ import {colors} from './colors';
 interface IInputStyledProps extends TextInputProps {
   bg?: string;
   color?: string;
+  border?: boolean;
 }
 
 export const InputDefaultStyled = styled.TextInput<IInputStyledProps>`
@@ -15,6 +16,7 @@ export const InputDefaultStyled = styled.TextInput<IInputStyledProps>`
   padding: 20px 24px;
   background-color: ${({bg}) => (bg ? bg : 'transparent')};
   color: ${({color}) => (color ? color : colors.black)};
+  ${({border}) => border && `border: 1px solid ${colors.error}`};
   size: 16px;
 `;
 

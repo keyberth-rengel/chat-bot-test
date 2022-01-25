@@ -17,26 +17,31 @@ import {
 } from '../../styles';
 
 //contanst
-import {routesName} from '../../app/contants';
+import {routesName} from '../../core/contants';
+
+//methods
+import {removeStoreData} from '../../core/storage';
 
 //store
 import {RootState} from '../../store';
 
 export const ProfileScreen = () => {
   const navigation = useNavigation();
-  const authState = useSelector<RootState>(
-    (state: RootState) => state.authState,
+  const userNameAuth = useSelector<RootState>(
+    (state: RootState) => state.authState.auth.userName,
+  );
+  const emailAuth = useSelector<RootState>(
+    (state: RootState) => state.authState.auth.email,
   );
 
-  const signOff = () => {
+  const signOff = async () => {
+    await removeStoreData();
     navigationToRegister();
   };
 
   const navigationToRegister = () => {
     navigation.navigate(routesName.REGISTER);
   };
-
-  console.log('authState', authState);
 
   return (
     <ContainerStyled flexbox justifyBetween alignCenter>
@@ -52,7 +57,7 @@ export const ProfileScreen = () => {
             {ES.user_name}
           </TextSmallStyled>
           <TextDefaultStyled color={colors.black} weight="700">
-            testing1
+            {String(userNameAuth)}
           </TextDefaultStyled>
         </ContainerStyled>
 
@@ -62,7 +67,7 @@ export const ProfileScreen = () => {
             {ES.email}
           </TextSmallStyled>
           <TextDefaultStyled color={colors.black} weight="700">
-            testing1@test.com
+            {String(emailAuth)}
           </TextDefaultStyled>
         </ContainerStyled>
       </ContainerStyled>

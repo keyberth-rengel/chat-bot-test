@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 //contants
-import {routesName} from '../app/contants';
+import {routesName} from '../core/contants';
 
 //pages
 import {RegisterScreen} from '../screens/auth/register';

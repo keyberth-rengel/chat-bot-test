@@ -7,4 +7,5 @@ export const colors = {
   grayLight: '#6C8080',
   grayDark: '#C4C4C4',
   pink: '#FFC5C5',
+  error: '#e9430f',
 };
