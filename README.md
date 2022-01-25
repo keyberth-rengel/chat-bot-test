@@ -17,9 +17,16 @@ Esta es una Clean Architecture usando
 - Abrir una terminal y escribir yarn o npm install para descargar las dependencias.
 - Dirigirse a la carpeta de ios y correr el comando npx pop install.
 - Para correr la app en android escribir en la terminal yarn android o npm run android.
+
 - Para correr la app en ios escribir en la terminal yarn ios o npm run ios.
 
 # Screenshots
+
+<img src='https://user-images.githubusercontent.com/45502428/151078596-33f0dadc-6a1b-49ba-b411-ac82638653e7.jpg' width="300px" />
+<img src='https://user-images.githubusercontent.com/45502428/151078757-d145e312-042d-4a86-989d-9935bd8f5e33.jpg' width="300px" />
+<img src='https://user-images.githubusercontent.com/45502428/151078765-cec854e2-692a-4ad3-a3d9-e65844c89c1c.jpg' width="300px" />
+<img src='https://user-images.githubusercontent.com/45502428/151078781-1ee82899-ae25-4f5d-a221-d756e06870bb.jpg' width="300px" />
+
 
 - El proyecto cuenta con 3 vistas - Register | Chat Screen | Profile Screen
 
