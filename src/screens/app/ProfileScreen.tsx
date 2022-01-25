@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 //locates
@@ -25,16 +25,21 @@ import {removeStoreData} from '../../core/storage';
 //store
 import {RootState} from '../../store';
 
+//actions
+import {clearChatAction} from '../../store/chat/chatAction';
+
+//interfaces
+import {UserAuthState} from '../../store/auth/auth.interface';
+
 export const ProfileScreen = () => {
   const navigation = useNavigation();
-  const userNameAuth = useSelector<RootState>(
-    (state: RootState) => state.authState.auth.userName,
-  );
-  const emailAuth = useSelector<RootState>(
-    (state: RootState) => state.authState.auth.email,
+  const dispatch = useDispatch();
+  const {email, userName} = useSelector<RootState, UserAuthState>(
+    (state: RootState) => state.authState.auth,
   );
 
   const signOff = async () => {
+    dispatch(clearChatAction());
     await removeStoreData();
     navigationToRegister();
   };
@@ -57,7 +62,7 @@ export const ProfileScreen = () => {
             {ES.user_name}
           </TextSmallStyled>
           <TextDefaultStyled color={colors.black} weight="700">
-            {String(userNameAuth)}
+            {userName || ES.user_name_fake}
           </TextDefaultStyled>
         </ContainerStyled>
 
@@ -67,7 +72,7 @@ export const ProfileScreen = () => {
             {ES.email}
           </TextSmallStyled>
           <TextDefaultStyled color={colors.black} weight="700">
-            {String(emailAuth)}
+            {email || ES.email_fake}
           </TextDefaultStyled>
         </ContainerStyled>
       </ContainerStyled>

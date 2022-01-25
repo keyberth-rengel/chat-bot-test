@@ -1,0 +1,92 @@
+export const responsesMsg = [
+  {
+    id: 1,
+    title: 'Steve Jobs ',
+    body: 'La innovación distingue al líder del seguidor.',
+    owner: false,
+  },
+  {
+    id: 2,
+    title: 'Walt Disney',
+    body: 'Si puedes soñarlo, puedes hacerlo.',
+    owner: false,
+  },
+  {
+    id: 3,
+    title: 'Mark Twain',
+    body: 'El secreto para salir adelante es comenzar.',
+    owner: false,
+  },
+  {
+    id: 4,
+    title: 'Henry Ford',
+    body: 'Los obstáculos son esas cosas atemorizantes que ves cuando apartas los ojos de tu meta.',
+    owner: false,
+  },
+  {
+    id: 5,
+    title: 'Albert Einstein',
+    body: 'La vida es como montar en bicicleta. para mantener el equilibrio tienes que avanzar.',
+    owner: false,
+  },
+  {
+    id: 6,
+    title: 'Winston Churchill',
+    body: 'El éxito no es definitivo, el fracaso no es fatídico. Lo que cuenta es el valor para continuar.',
+    owner: false,
+  },
+  {
+    id: 7,
+    title: 'Paulo Coelho',
+    body: 'Sé valiente. Toma riesgos. Nada puede sustituir la experiencia.',
+    owner: false,
+  },
+  {
+    id: 8,
+    title: 'Eleanor Roosevelt',
+    body: 'El futuro pertenece a aquellos que creen en la belleza de sus sueños.',
+    owner: false,
+  },
+  {
+    id: 9,
+    title: 'Francis Bacon',
+    body: 'El conocimiento es poder.',
+    owner: false,
+  },
+  {
+    id: 10,
+    title: 'Nelson Mandela',
+    body: 'He aprendido que el valor no es la ausencia de miedo, sino el triunfo sobre él. El hombre valiente no es el que no siente miedo, sino el que lo domina.',
+    owner: false,
+  },
+  {
+    id: 11,
+    title: 'Confucio',
+    body: 'Solo puede ser feliz siempre el que sabe ser feliz con todo.',
+    owner: false,
+  },
+  {
+    id: 12,
+    title: 'J. K. Rwolling',
+    body: 'Es la capacidad de resistir a los errores lo que a menudo conduce a un mayor éxito.',
+    owner: false,
+  },
+  {
+    id: 13,
+    title: 'Buda',
+    body: 'Aferrarse al rencor es como beber veneno y esperar que otra persona muera.',
+    owner: false,
+  },
+  {
+    id: 14,
+    title: 'Marilyn Monroe',
+    body: 'No pares cuando estés cansado. Para cuando hayas terminado.',
+    owner: false,
+  },
+  {
+    id: 15,
+    title: 'Woody Allen',
+    body: 'El 80% del éxito se basa simplemente en insistir.',
+    owner: false,
+  },
+];

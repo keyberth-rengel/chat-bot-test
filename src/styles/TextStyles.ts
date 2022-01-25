@@ -6,6 +6,7 @@ interface ITextStyledProps {
   weight?: string;
   family?: string;
   align?: string;
+  lineHeight?: string;
 }
 
 export const TextLongStyled = styled.Text<ITextStyledProps>`
@@ -28,7 +29,7 @@ export const TextDefaultStyled = styled.Text<ITextStyledProps>`
 
 export const TextMediumStyled = styled.Text<ITextStyledProps>`
   font-size: 14px;
-  line-height: 24px;
+  line-height: 18px;
   color: ${({color}) => (color ? color : colors.black)};
   font-weight: ${({weight}) => (weight ? weight : 'normal')};
   font-family: ${({family}) => (family ? family : 'normal')};
@@ -37,7 +38,7 @@ export const TextMediumStyled = styled.Text<ITextStyledProps>`
 
 export const TextSmallStyled = styled.Text<ITextStyledProps>`
   font-size: 12px;
-  line-height: 24px;
+  line-height: ${({lineHeight = '24px'}) => (lineHeight ? lineHeight : '24px')};
   color: ${({color}) => (color ? color : colors.black)};
   font-weight: ${({weight}) => (weight ? weight : 'normal')};
   font-family: ${({family}) => (family ? family : 'normal')};

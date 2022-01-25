@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Image} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
 
 //locates
@@ -13,19 +14,25 @@ import {
   MessageBody,
   TextMediumStyled,
   colors,
+  TextSmallStyled,
 } from '../../styles';
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title:
-      'First Item First Item First Item First Item First Item First Item First Item First Item',
-    owner: false,
-  },
-];
+//actions
+import {setMessageInChatAction} from '../../store/chat/chatAction';
+
+//interfaces
+import {MessageChat} from '../../store/chat/chat.interfaces';
+import {UserAuthState} from '../../store/auth/auth.interface';
+
+//store
+import {RootState} from '../../store';
+
+//data
+import {responsesMsg} from '../../data/messageResponse';
 
 interface IRenderItemMessageProps {
   id: string;
+  body: string;
   title: string;
   owner: boolean;
 }
@@ -39,19 +46,52 @@ const renderItemMessage = ({item}: {item: IRenderItemMessageProps}) => (
     pR="0"
     pB="8">
     <MessageBody bg={item.owner ? colors.ocean : colors.gray}>
+      <TextSmallStyled
+        lineHeight="15px"
+        align="right"
+        weight="bold"
+        color={colors.black}>
+        {item.title || ES.user_name_fake}
+      </TextSmallStyled>
       <TextMediumStyled color={item.owner ? colors.white : colors.black}>
-        {item.title}
+        {item.body}
       </TextMediumStyled>
     </MessageBody>
   </ContainerStyled>
 );
 
 export const ChatScreen = () => {
+  const dispatch = useDispatch();
+  const {userName} = useSelector<RootState, UserAuthState>(
+    (state: RootState) => state.authState.auth,
+  );
+  const chatMessageList = useSelector<RootState, MessageChat[]>(
+    (state: RootState) => state.chatState.messages,
+  );
   const [textMessage, setTextMessage] = useState<string>('');
 
   const sendMessage = () => {
+    const message: MessageChat = {
+      id: new Date().getMilliseconds(),
+      owner: true,
+      body: textMessage,
+      title: userName,
+    };
+
+    dispatch(setMessageInChatAction(message));
+    responseMessage();
     cleanForm();
   };
+
+  const responseMessage = (): void => {
+    setTimeout(() => {
+      dispatch(setMessageInChatAction(responsesMsg[random()]));
+    }, 500);
+  };
+
+  function random(): number {
+    return Math.floor(Math.random() * (15 - 1 + 1)) + 1;
+  }
 
   const cleanForm = () => {
     setTextMessage('');
@@ -62,7 +102,7 @@ export const ChatScreen = () => {
       <FlatList
         style={{width: '100%'}}
         showsVerticalScrollIndicator={false}
-        data={DATA}
+        data={chatMessageList}
         renderItem={renderItemMessage}
         keyExtractor={item => item.id}
       />
